@@ -78,6 +78,10 @@
         <include name="nuxeo-generic-wss-handler*" />
       </fileset>
     </move>
+    <!-- rename jexl2 so that update system does not remplace jexl 1 lib that is already part of Nuxeo -->
+    <nx:rename from="${outdir}/nxr/lib/commons-jexl-*"
+               to="${outdir}/nxr/lib/commons-jexl2-do-not-remove-2.jar" />
+
     <nx:rmdups dir="${outdir}/nxr/lib" />
     <!-- Temporary ZIP Nuxeo NXR to compare with base distribution NXR -->
     <zip destfile="${outdir}/nxr-${marketplace.groups.rights.audit.version}.zip"
