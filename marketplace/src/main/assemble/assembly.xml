@@ -92,7 +92,8 @@
                 file2="${outdir}/nuxeo-distribution-cap-${nuxeo.distribution.version}.zip"
                 includesfile="${outdir}/includes"
                 excludesfile="${outdir}/excludesfile"
-                patternsetid="groups.rights.audit.versus.cap">
+                patternsetid="groups.rights.audit.versus.cap"
+				ignoreContentPattern=".*jar$">
     </nx:zipdiff>
     <unzip src="${outdir}/nxr-${marketplace.groups.rights.audit.version}.zip"
            dest="${outdir}/marketplace/install">
