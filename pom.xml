@@ -45,7 +45,7 @@
       </dependency>
       <dependency>
         <groupId>org.nuxeo.marketplace.groups.rights.audit</groupId>
-        <artifactId>nuxeo-groups-rights-audit</artifactId>
+        <artifactId>marketplace-groups-rights-audit</artifactId>
         <version>${marketplace.groups.rights.audit.version}</version>
         <type>zip</type>
       </dependency>
