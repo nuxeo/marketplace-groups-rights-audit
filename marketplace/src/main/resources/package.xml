@@ -7,32 +7,32 @@ This package allows running an audit on all permissions for all users of a docum
 
 <h3>Prerequisite</h3>
 <ul>
-<li>Version: Nuxeo 5.6 HF10* or higher
-<li>A mail server must be reachable by your Nuxeo server
-<li>The administrator running the audit should have an email set
+<li>Version: Nuxeo 5.6 HF10* or higher</li>
+<li>A mail server must be reachable by your Nuxeo server</li>
+<li>The administrator running the audit should have an email set</li>
 </ul>
 * to install all hotfix for your 5.6 server, run nuxeoctl mp-hotfix
 
 <h3>How to install</h3>
 <ul>
-<li>From command line, run nuxeoctl mp-install /path/to/package.zip
-<li>OR, through the Update Center of your Nuxeo server, search for this package, download it and install it.
+<li>From command line, run nuxeoctl mp-install /path/to/package.zip</li>
+<li>OR, through the Update Center of your Nuxeo server, search for this package, download it and install it.</li>
 </ul>
 
 <h3>How to use</h3>
 <ul>
-<li>Select a folder for which you intend to audit permissions.
-<li>Click the "Export" icon on the top right part of the page.
-<li>Click the "Export a permission audit" to start the audit as a background job. 
-<li>An excel report will be emailed to you once the audit is finished.
-<li>You can monitor the job progress from the admin center ("Activities" > "Background work"). 
+<li>Select a folder for which you intend to audit permissions.</li>
+<li>Click the "Export" icon on the top right part of the page.</li>
+<li>Click the "Export a permission audit" to start the audit as a background job.</li> 
+<li>An excel report will be emailed to you once the audit is finished.</li>
+<li>You can monitor the job progress from the admin center ("Activities" > "Background work"). </li>
 </ul>
 
 <h3>Limitations</h3>
 Excel has some limitations: 65536 lines and 256 columns per sheet. As the document tree will spread over lines, and the users and groups will spread over columns, audit will have the following behaviour once reaching those limits:
 <ul>
-<li>if the number of selected documents and folders is superior to 65535, the audit job will process up to 65535 entities and ignore all other. Note that those 65535 documents and folder are picked in random order, so the output document tree might appear incomplete. In that case, the "Legend" page displays an error message at the first line (ERROR_TOO_MANY_DOCUMENTS).
-<li>if the number of groups exceed 256, some new sheet are created to add virtual columns. One might use excel Views to open several sheets at the same time and synchronizing row scrolling. As the maximum number of sheets is defined by your actual server memory, there is no constraint on the number of groups.
+<li>if the number of selected documents and folders is superior to 65535, the audit job will process up to 65535 entities and ignore all other. Note that those 65535 documents and folder are picked in random order, so the output document tree might appear incomplete. In that case, the "Legend" page displays an error message at the first line (ERROR_TOO_MANY_DOCUMENTS).</li>
+<li>if the number of groups exceed 256, some new sheet are created to add virtual columns. One might use excel Views to open several sheets at the same time and synchronizing row scrolling. As the maximum number of sheets is defined by your actual server memory, there is no constraint on the number of groups.</li>
 </ul>
 Additionnaly, if scanning the repository takes more time than the specified timeout, the audit job will do as much as possible work, and exit cleanly before timeout. In that case, the "Legend" page displays an error message at the first line (ERROR_TOO_LONG_PROCESS).
 
@@ -45,14 +45,20 @@ Default process timeout is 20 minutes (1200sec). One can change this by editing 
   <vendor>Nuxeo</vendor>
   <installer restart="true" />
   <uninstaller restart="true" />
+  
   <!-- <hotreload-support>false</hotreload-support> -->
   <!-- <require-terms-and-conditions-acceptance>false</require-terms-and-conditions-acceptance> -->
   <nuxeo-validation>nuxeo_certified</nuxeo-validation>
   <production-state>production_ready</production-state>
   <supported>true</supported>
   <platforms>
-    <platform>cap-@DISTRIB_VERSION@</platform>
+    <platform>cap-5.6</platform>
   </platforms>
+  <dependencies>
+   <package>nuxeo-5.6.0-HF10:1.0.0</package>
+  </dependencies>
+
+
   <license>LGPL</license>
   <license-url>http://www.gnu.org/licenses/lgpl.html</license-url>
 </package>
