@@ -7,7 +7,7 @@ This package allows running an audit on all permissions for all users of a docum
 
 <h3>Prerequisite</h3>
 <ul>
-<li>Version: Nuxeo 5.6 HF10* or higher</li>
+<li>Version: Nuxeo 5.6 HF12* or higher</li>
 <li>A mail server must be reachable by your Nuxeo server</li>
 <li>The administrator running the audit should have an email set</li>
 </ul>
@@ -55,7 +55,7 @@ Default process timeout is 20 minutes (1200sec). One can change this by editing 
     <platform>cap-5.6</platform>
   </platforms>
   <dependencies>
-   <package>nuxeo-5.6.0-HF10:1.0.0</package>
+   <package>nuxeo-5.6.0-HF12:1.0.0</package>
   </dependencies>
 
 
