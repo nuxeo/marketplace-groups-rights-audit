@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.nuxeo.marketplace.groups.rights.audit</groupId>
     <artifactId>parent</artifactId>
-    <version>1.2-SNAPSHOT</version>
+    <version>1.2.1-SNAPSHOT</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
@@ -60,7 +60,7 @@
               <argLine>-Dlog4j.configuration=${file.uri.prefix}${basedir}/src/test/resources/log4j.xml
                 -Dnuxeo.log.dir=${build.directory}
                 -DsomePassword=${some.password}
-				${it.failsafe.argLine}
+                ${it.failsafe.argLine}
               </argLine>
             </configuration>
           </execution>
