@@ -28,9 +28,9 @@
       <modules>
         <module>ftest/webdriver</module>
         <!--
-        <module>ftest/selenium</module>
-        <module>ftest/funkload</module>
-        <module>ftest/cmis</module>
+          <module>ftest/selenium</module>
+          <module>ftest/funkload</module>
+          <module>ftest/cmis</module>
         -->
       </modules>
     </profile>
@@ -90,9 +90,9 @@
   </repositories>
 
   <scm>
-    <connection>scm:git:git://github.com/nuxeo/nuxeo-groups-rights-audit.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com:nuxeo/nuxeo-groups-rights-audit.git</developerConnection>
-    <url>https://github.com/nuxeo/nuxeo-groups-rights-audit</url>
+    <connection>scm:git:git://github.com/nuxeo/marketplace-groups-rights-audit.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com:nuxeo/marketplace-groups-rights-audit.git</developerConnection>
+    <url>https://github.com/nuxeo/marketplace-groups-rights-audit</url>
   </scm>
 
 </project>
