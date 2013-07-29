@@ -79,7 +79,7 @@
       </fileset>
     </move>
     <!-- rename jexl2 so that update system does not remplace jexl 1 lib that is already part of Nuxeo -->
-    <nx:rename from="${outdir}/nxr/lib/commons-jexl-*"
+    <nx:rename from="${outdir}/nxr/lib/commons-jexl-2*"
                to="${outdir}/nxr/lib/commons-jexl2-do-not-remove-2.jar" />
 
     <nx:rmdups dir="${outdir}/nxr/lib" />
