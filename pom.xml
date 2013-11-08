@@ -3,18 +3,18 @@
   <parent>
     <groupId>org.nuxeo.ecm.distribution</groupId>
     <artifactId>nuxeo-distribution</artifactId>
-    <version>5.8</version>
+    <version>5.8.0-HF01-SNAPSHOT</version>
   </parent>
 
   <groupId>org.nuxeo.marketplace.groups.rights.audit</groupId>
   <artifactId>parent</artifactId>
   <packaging>pom</packaging>
   <name>Nuxeo Groups Rights Audit Marketplace package</name>
-  <version>1.4</version>
+  <version>1.4.1-SNAPSHOT</version>
 
   <properties>
-    <marketplace.groups.rights.audit.version>1.4</marketplace.groups.rights.audit.version>
-    <nuxeo.version>5.8</nuxeo.version>
+    <marketplace.groups.rights.audit.version>1.4.1-SNAPSHOT</marketplace.groups.rights.audit.version>
+    <nuxeo.version>5.8.0-HF01-SNAPSHOT</nuxeo.version>
   </properties>
 
   <modules>
