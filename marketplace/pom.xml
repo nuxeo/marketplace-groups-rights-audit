@@ -53,21 +53,21 @@
 
   <build>
     <plugins>
-	<!-- Temporarily allow SNAPSHOT for nuxeo-distribution-tools -->
+	<!-- Temporarily allow SNAPSHOT for ant-assembly-maven-plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
         <configuration>
           <rules>
             <requirePluginVersions>
-              <unCheckedPluginList>org.nuxeo.build:nuxeo-distribution-tools</unCheckedPluginList>
+              <unCheckedPluginList>org.nuxeo.build:ant-assembly-maven-plugin</unCheckedPluginList>
             </requirePluginVersions>
           </rules>
         </configuration>
       </plugin>
       <plugin>
         <groupId>org.nuxeo.build</groupId>
-        <artifactId>nuxeo-distribution-tools</artifactId>
+        <artifactId>ant-assembly-maven-plugin</artifactId>
         <configuration>
           <buildFiles>
             <buildFile>${basedir}/src/main/assemble/assembly.xml</buildFile>
