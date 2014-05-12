@@ -33,7 +33,7 @@
       Default process timeout is 20 minutes (1200sec). One can change this by editing <code>nuxeo.conf</code> with <code>nuxeo.audit.acl.timeout=3600</code> (in seconds).
     </p>
   </description>
-  <home-page>http://doc.nuxeo.com/x/iIGo</home-page>
+  <home-page>http://doc.nuxeo.com/x/qY31</home-page>
   <vendor>Nuxeo</vendor>
   <installer restart="true" />
   <uninstaller restart="true" />
