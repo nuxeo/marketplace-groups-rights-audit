@@ -1,4 +1,4 @@
-<project name="nuxeo-assembly"
+<project name="groups-rights-audit-assembly"
          default="build"
          xmlns:nx="urn:nuxeo-build"
          xmlns:artifact="urn:nuxeo-artifact">
@@ -17,7 +17,8 @@
     <artifact:nuxeo-expand includeTestScope="true"
                            groupPrefixes="org.nuxeo,com.nuxeo" />
     <!-- For Nuxeo IDE being able to use that distribution as a SDK -->
-    <artifact:print output="${outdir}/artifacts-groups-rights-audit.properties" mode="sdk" />
+    <artifact:print output="${outdir}/artifacts-groups-rights-audit.properties"
+                    mode="sdk" />
     <artifact:print output="${outdir}/test-artifacts-groups-rights-audit.properties"
                     mode="sdk"
                     scopes="test" />
@@ -36,7 +37,8 @@
     <copy todir="${outdir}/marketplace">
       <fileset dir="src/main/resources" />
       <filterset>
-        <filter token="VERSION" value="${marketplace.groups.rights.audit.version}" />
+        <filter token="VERSION"
+                value="${marketplace.groups.rights.audit.version}" />
         <filter token="DISTRIB_VERSION" value="${nuxeo.distribution.version}" />
       </filterset>
     </copy>
@@ -93,7 +95,7 @@
                 includesfile="${outdir}/includes"
                 excludesfile="${outdir}/excludesfile"
                 patternsetid="groups.rights.audit.versus.cap"
-				ignoreContentPattern=".*jar$">
+                ignoreContentPattern=".*jar$">
     </nx:zipdiff>
     <unzip src="${outdir}/nxr-${marketplace.groups.rights.audit.version}.zip"
            dest="${outdir}/marketplace/install">
@@ -103,7 +105,6 @@
     <zip destfile="${outdir}/${maven.project.artifactId}-${marketplace.groups.rights.audit.version}.zip"
          basedir="${outdir}/marketplace" />
     <artifact:attach file="${outdir}/${maven.project.artifactId}-${marketplace.groups.rights.audit.version}.zip"
-                     target="${maven.project.groupId}:${maven.project.artifactId}"
                      type="zip" />
   </target>
 
