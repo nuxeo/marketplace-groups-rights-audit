@@ -4,13 +4,13 @@
   <description>
     <p>
       This package allows running an audit on all permissions for all users of a document tree.
-  
+
       <h3>Prerequisites</h3>
       <ul>
         <li>A mail server must be reachable by your Nuxeo server</li>
         <li>The administrator running the audit should have an email set</li>
       </ul>
-  
+
       <h3>Usage</h3>
       <ul>
         <li>Select a folder for which you intend to audit permissions.</li>
@@ -19,7 +19,7 @@
         <li>An excel report will be emailed to you once the audit is finished.</li>
         <li>You can monitor the job progress from the Admin Center ("Activities" > "Background work").</li>
       </ul>
-  
+
       <h3>Limitations</h3>
       Excel has some limitations: 65536 lines and 256 columns per sheet. As the document tree will spread over lines, and the users and groups will spread over columns, audit will have the following behaviour once reaching those limits:
       <ul>
@@ -28,7 +28,7 @@
         <li>if the number of groups exceed 256, some new sheets are created to add virtual columns. One might use excel Views to open several sheets at the same time and synchronizing row scrolling. As the maximum number of sheets is defined by your actual server memory, there is no constraint on the number of groups.</li>
       </ul>
       Additionally, if scanning the repository takes more time than the specified timeout, the audit job will do as much as possible work, and exit cleanly before timeout. In that case, the "Legend" page displays an error message at the first line (ERROR_TOO_LONG_PROCESS).
-  
+
       <h3>How to configure</h3>
       Default process timeout is 20 minutes (1200sec). One can change this by editing <code>nuxeo.conf</code> with <code>nuxeo.audit.acl.timeout=3600</code> (in seconds).
     </p>
@@ -50,4 +50,5 @@
   </dependencies>
   <license>LGPL 2.1</license>
   <license-url>http://www.gnu.org/licenses/lgpl-2.1.html</license-url>
+  <visibility>MARKETPLACE</visibility>
 </package>
