@@ -1,9 +1,10 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.nuxeo.marketplace.groups.rights.audit</groupId>
     <artifactId>parent</artifactId>
-    <version>1.5-SNAPSHOT</version>
+    <version>1.6-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 
@@ -18,33 +19,6 @@
       <artifactId>nuxeo-distribution-cap</artifactId>
       <type>pom</type>
     </dependency>
-    <!-- <dependency> -->
-    <!-- <groupId>org.nuxeo.ecm.distribution</groupId> -->
-    <!-- <artifactId>nuxeo-distribution-coreserver</artifactId> -->
-    <!-- <type>pom</type> -->
-    <!-- </dependency> -->
-    <!-- <dependency> -->
-    <!-- <groupId>org.nuxeo.ecm.distribution</groupId> -->
-    <!-- <artifactId>nuxeo-distribution-dm</artifactId> -->
-    <!-- <type>pom</type> -->
-    <!-- </dependency> -->
-    <!-- <dependency> -->
-    <!-- <groupId>org.nuxeo.ecm.distribution</groupId> -->
-    <!-- <artifactId>nuxeo-distribution-dam</artifactId> -->
-    <!-- <type>pom</type> -->
-    <!-- </dependency> -->
-    <!-- <dependency> -->
-    <!-- <groupId>org.nuxeo.ecm.distribution</groupId> -->
-    <!-- <artifactId>nuxeo-distribution-cmf</artifactId> -->
-    <!-- <type>pom</type> -->
-    <!-- </dependency> -->
-    <!-- <dependency> -->
-    <!-- <groupId>org.nuxeo.ecm.distribution</groupId> -->
-    <!-- <artifactId>nuxeo-distribution-social-collaboration</artifactId> -->
-    <!-- <type>pom</type> -->
-    <!-- </dependency> -->
-
-    <!-- Additional bundles to be deployed by the MP -->
     <dependency>
       <groupId>org.nuxeo.ecm.platform</groupId>
       <artifactId>nuxeo-groups-rights-audit</artifactId>
@@ -53,18 +27,6 @@
 
   <build>
     <plugins>
-	<!-- Temporarily allow SNAPSHOT for ant-assembly-maven-plugin -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-enforcer-plugin</artifactId>
-        <configuration>
-          <rules>
-            <requirePluginVersions>
-              <unCheckedPluginList>org.nuxeo.build:ant-assembly-maven-plugin</unCheckedPluginList>
-            </requirePluginVersions>
-          </rules>
-        </configuration>
-      </plugin>
       <plugin>
         <groupId>org.nuxeo.build</groupId>
         <artifactId>ant-assembly-maven-plugin</artifactId>

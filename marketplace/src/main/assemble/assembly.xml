@@ -3,8 +3,7 @@
          xmlns:nx="urn:nuxeo-build"
          xmlns:artifact="urn:nuxeo-artifact">
   <taskdef resource="org/nuxeo/build/antlib.xml" uri="urn:nuxeo-build" />
-  <taskdef resource="org/nuxeo/build/artifact/antlib.xml"
-           uri="urn:nuxeo-artifact" />
+  <taskdef resource="org/nuxeo/build/artifact/antlib.xml" uri="urn:nuxeo-artifact" />
 
   <target name="init" unless="init.done">
     <property name="outdir" value="${maven.project.build.directory}" />
@@ -14,21 +13,15 @@
 
   <target name="expand">
     <!-- Include your artifacts in the graph adding your groupId to groupPrefixes -->
-    <artifact:nuxeo-expand includeTestScope="true"
-                           groupPrefixes="org.nuxeo,com.nuxeo" />
+    <artifact:nuxeo-expand includeTestScope="true" groupPrefixes="org.nuxeo" />
     <!-- For Nuxeo IDE being able to use that distribution as a SDK -->
-    <artifact:print output="${outdir}/artifacts-groups-rights-audit.properties"
-                    mode="sdk" />
-    <artifact:print output="${outdir}/test-artifacts-groups-rights-audit.properties"
-                    mode="sdk"
-                    scopes="test" />
+    <artifact:print output="${outdir}/artifacts-groups-rights-audit.properties" mode="sdk" />
+    <artifact:print output="${outdir}/test-artifacts-groups-rights-audit.properties" mode="sdk" scopes="test" />
     <!-- Prints the graph for debugging purpose -->
     <artifact:print output="${outdir}/dependency-tree.log" />
   </target>
 
-  <target name="build"
-          depends="init"
-          description="Build Nuxeo Groups Rights Audit Marketplace package">
+  <target name="build" depends="init" description="Build Nuxeo Groups Rights Audit Marketplace package">
     <tstamp />
     <delete failonerror="false" dir="${outdir}/nxr" />
     <mkdir dir="${outdir}/nxr" />
@@ -37,15 +30,12 @@
     <copy todir="${outdir}/marketplace">
       <fileset dir="src/main/resources" />
       <filterset>
-        <filter token="VERSION"
-                value="${marketplace.groups.rights.audit.version}" />
+        <filter token="VERSION" value="${maven.project.version}" />
         <filter token="DISTRIB_VERSION" value="${nuxeo.distribution.version}" />
       </filterset>
     </copy>
-    <copy file="${outdir}/artifacts-groups-rights-audit.properties"
-          todir="${outdir}/marketplace/install" />
-    <copy file="${outdir}/test-artifacts-groups-rights-audit.properties"
-          todir="${outdir}/marketplace/install" />
+    <copy file="${outdir}/artifacts-groups-rights-audit.properties" todir="${outdir}/marketplace/install" />
+    <copy file="${outdir}/test-artifacts-groups-rights-audit.properties" todir="${outdir}/marketplace/install" />
 
     <!-- Base distribution NXR -->
     <copy todir="${outdir}">
@@ -57,9 +47,10 @@
       <artifact:set>
         <includes>
           <artifact groupId="org.nuxeo*" scope="!test" type="!pom" />
-          <!-- Include your artifacts using their groupId for instance -->
-          <artifact groupId="com.nuxeo*" scope="!test" type="!pom" />
         </includes>
+        <excludes>
+          <artifact groupId="org.nuxeo.lib*" />
+        </excludes>
       </artifact:set>
     </copy>
     <!-- Third-party libraries -->
@@ -67,45 +58,33 @@
       <artifact:set>
         <includes>
           <artifact groupId="!org.nuxeo*" scope="!test" />
+          <artifact groupId="org.nuxeo.lib*" scope="!test" />
         </includes>
-        <excludes>
-          <!-- Filter out your artifacts using their groupId for instance -->
-          <artifact groupId="com.nuxeo*" />
-        </excludes>
       </artifact:set>
     </copy>
-    <move todir="${outdir}/nxr/lib">
-      <fileset dir="${outdir}/nxr/bundles">
-        <include name="nuxeo-generic-wss-front*" />
-        <include name="nuxeo-generic-wss-handler*" />
-      </fileset>
-    </move>
     <!-- rename jexl2 so that update system does not remplace jexl 1 lib that is already part of Nuxeo -->
-    <nx:rename from="${outdir}/nxr/lib/commons-jexl-2*"
-               to="${outdir}/nxr/lib/commons-jexl2-do-not-remove-2.jar" />
-
+    <nx:rename from="${outdir}/nxr/lib/commons-jexl-2*" to="${outdir}/nxr/lib/commons-jexl2-do-not-remove-2.jar" />
     <nx:rmdups dir="${outdir}/nxr/lib" />
+
     <!-- Temporary ZIP Nuxeo NXR to compare with base distribution NXR -->
-    <zip destfile="${outdir}/nxr-${marketplace.groups.rights.audit.version}.zip"
-         basedir="${outdir}/nxr" />
+    <zip destfile="${outdir}/nxr-${maven.project.version}.zip" basedir="${outdir}/nxr" />
+    <artifact:attach file="${outdir}/nxr-${maven.project.version}.zip" classifier="nxr" type="zip" />
 
     <!-- Your MP only needs to include files not already provided by the base distribution -->
-    <nx:zipdiff file1="${outdir}/nxr-${marketplace.groups.rights.audit.version}.zip"
+    <nx:zipdiff file1="${outdir}/nxr-${maven.project.version}.zip"
                 file2="${outdir}/nuxeo-distribution-cap-${nuxeo.distribution.version}.zip"
                 includesfile="${outdir}/includes"
                 excludesfile="${outdir}/excludesfile"
                 patternsetid="groups.rights.audit.versus.cap"
                 ignoreContentPattern=".*jar$">
     </nx:zipdiff>
-    <unzip src="${outdir}/nxr-${marketplace.groups.rights.audit.version}.zip"
-           dest="${outdir}/marketplace/install">
+    <unzip src="${outdir}/nxr-${maven.project.version}.zip" dest="${outdir}/marketplace/install">
       <patternset refid="groups.rights.audit.versus.cap" />
     </unzip>
 
-    <zip destfile="${outdir}/${maven.project.artifactId}-${marketplace.groups.rights.audit.version}.zip"
+    <zip destfile="${outdir}/${maven.project.artifactId}-${maven.project.version}.zip"
          basedir="${outdir}/marketplace" />
-    <artifact:attach file="${outdir}/${maven.project.artifactId}-${marketplace.groups.rights.audit.version}.zip"
-                     type="zip" />
+    <artifact:attach file="${outdir}/${maven.project.artifactId}-${maven.project.version}.zip" type="zip" />
   </target>
 
 </project>
