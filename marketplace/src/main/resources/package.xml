@@ -1,37 +1,7 @@
 <!-- See documentation at http://doc.nuxeo.com/x/HgIz -->
 <package type="addon" name="nuxeo-groups-rights-audit" version="@VERSION@">
   <title>Nuxeo Groups and Rights Audit</title>
-  <description>
-    <p>
-      This package allows running an audit on all permissions for all users of a document tree.
-
-      <h3>Prerequisites</h3>
-      <ul>
-        <li>A mail server must be reachable by your Nuxeo server</li>
-        <li>The administrator running the audit should have an email set</li>
-      </ul>
-
-      <h3>Usage</h3>
-      <ul>
-        <li>Select a folder for which you intend to audit permissions.</li>
-        <li>Click the "Export" icon on the top right part of the page.</li>
-        <li>Click the "Export a permission audit" to start the audit as a background job.</li>
-        <li>An excel report will be emailed to you once the audit is finished.</li>
-        <li>You can monitor the job progress from the Admin Center ("Activities" > "Background work").</li>
-      </ul>
-
-      <h3>Limitations</h3>
-      Excel has some limitations: 65536 lines and 256 columns per sheet. As the document tree will spread over lines, and the users and groups will spread over columns, audit will have the following behaviour once reaching those limits:
-      <ul>
-        <li>if the number of selected documents and folders is superior to 65535, the audit job will process up to 65535 entities and ignore all others.
-          Note that those 65535 documents and folder are picked in random order, so the output document tree might appear incomplete. In that case, the "Legend" page displays an error message at the first line (ERROR_TOO_MANY_DOCUMENTS).</li>
-        <li>if the number of groups exceed 256, some new sheets are created to add virtual columns. One might use excel Views to open several sheets at the same time and synchronizing row scrolling. As the maximum number of sheets is defined by your actual server memory, there is no constraint on the number of groups.</li>
-      </ul>
-      Additionally, if scanning the repository takes more time than the specified timeout, the audit job will do as much as possible work, and exit cleanly before timeout. In that case, the "Legend" page displays an error message at the first line (ERROR_TOO_LONG_PROCESS).
-
-      <h3>How to configure</h3>
-      Default process timeout is 20 minutes (1200sec). One can change this by editing <code>nuxeo.conf</code> with <code>nuxeo.audit.acl.timeout=3600</code> (in seconds).
-    </p>
+  <description>The Nuxeo Groups and Rights Audit addon generates an Excel matrix listing every exported documents with permissions for each user.
   </description>
   <home-page>http://doc.nuxeo.com/x/9ozZ</home-page>
   <vendor>Nuxeo</vendor>
